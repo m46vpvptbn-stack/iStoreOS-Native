@@ -39,3 +39,26 @@ cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig p
 
 # 复制dts到target/linux/rockchip/dts/rk3568
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
+
+# ============================================================================================================
+# 移植LubanCat-2n示例 (RK3568)
+# ============================================================================================================
+# 增加设备
+echo -e "\\ndefine Device/embedfire_lubancat_2n
+  DEVICE_VENDOR := EmbedFire
+  DEVICE_MODEL := LubanCat-2n
+  SOC := rk3568
+  UBOOT_DEVICE_NAME := lubancat-2n-rk3568
+endef
+TARGET_DEVICES += embedfire_lubancat_2n" >> target/linux/rockchip/image/armv8.mk
+
+# 复制dts与配置文件到package/boot/uboot-rockchip
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3568-lubancat-2n.dts package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3568-lubancat-2n-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/lubancat-2n-rk3568_defconfig package/boot/uboot-rockchip/src/configs/
+
+# 复制dts到target/linux/rockchip/dts/rk3568
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3568-lubancat-2n.dts target/linux/rockchip/dts/rk3568/
+
+# 添加dtb补丁到target/linux/rockchip/patches-6.6
+cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3568-lubancat-2n-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
