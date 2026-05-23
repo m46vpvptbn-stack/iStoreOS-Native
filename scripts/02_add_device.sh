@@ -61,4 +61,4 @@ cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/lubancat-2n-rk3568_defconfig 
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3568-lubancat-2n.dts target/linux/rockchip/dts/rk3568/
 
 # 添加dtb补丁到target/linux/rockchip/patches-6.6
-cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3568-lubancat-2n-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
+cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
